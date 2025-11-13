@@ -6,7 +6,7 @@
 
 
 
-### Environment
+### آماده سازی محیط توسعه
 
 ```bash
 pip install numpy==1.18.1
@@ -15,19 +15,12 @@ pip install pyyaml==5.3.1
 pip install tqdm==4.45.0
 ```
 
-### Data
-The data source used are ASDE-X data from Sherlock. Here, we anonymized the data by,
-
-- Remove the real-world unix timestamp and replace them by absolute time steps (e.g. 5, 10, 15, 20).
-- The flight callsign are masked with a unique agent id (integer).
-
-For this experiment, only four columns of ASDE-X needed. They are time, id, latitude, and longitude.
-
-The code used for processing and anonymized the raw ASDE-X data can be found in Part 1 Data Processing Demo. Data are saved in ```./data/iff/atl/2019080x/true_pos_.csv```
+### دیتاست
+برای آموزش و تست از دیتاست TartanAviation به‌عنوان یک مجموعه داده چندوجهی و جامع در حوزه عملیات هوانوردی در نواحی ترمینالی فرودگاه‌ها استفاده شده است. این مجموعه داده توسط دانشگاه کارنگی ملون (Carnegie Mellon University) و در قالب پروژه‌ای از آزمایشگاه Airlab  وابسته به دانشکده علوم کامپیوتر این دانشگاه توسعه یافته است. هدف از طراحی این مجموعه، فراهم‌سازی بستری برای پژوهش‌های پیشرفته در زمینه ادراک چندوجهی، تحلیل ایمنی هوانوردی، و توسعه سیستم‌های هوشمند پشتیبانی تصمیم‌گیری در فرودگاه‌ها بوده است. دیتاست TartanAviation  منبعی ارزشمند از داده‌های هم‌زمان شامل تصاویر ویدیویی، مکالمات صوتی کنترل ترافیک هوایی، و داده‌های موقعیت‌یابی ADS-B است که در بازه‌های زمانی متنوع و در دو فرودگاه متفاوت در ایالات متحده (یکی دارای برج مراقبت و دیگری بدون برج) گردآوری شده‌اند. این مجموعه شامل بیش از ۳.۱ میلیون تصویر، ۳۳۷۴ ساعت گفت‌وگوی صوتی میان خلبانان و کنترلرها، و ۶۶۱ روز داده‌های موقعیت‌یابی پروازهاست. تمامی داده‌ها پس از جمع‌آوری، پالایش، پردازش و اعتبارسنجی شده‌اند و همراه با کد منبع مراحل جمع‌آوری و پیش‌پردازش، به‌صورت متن‌باز منتشر شده‌اند. ویژگی چندوجهی و تنوع شرایط جوی و عملیاتی این مجموعه را به منبعی منحصربه‌فرد برای پژوهش‌های مرتبط با تحلیل سری‌های زمانی، پردازش تصویر، درک زبان طبیعی، و مدل‌های یادگیری چندوجهی در زمینه هوانوردی تبدیل کرده است. در این تحقیق، از زیرمجموعه‌ی مربوط به داده‌های ADS-B پروازها برای آموزش و ارزیابی مدل پیش‌بینی  موقعیت آتی هواپیماها استفاده شده است  با توجه به منابع پردازشی محدود در این پژوهش از گام‌های زمانی 5 ثانیه‌ای استفاده شده است. 
 
 
-### To Train an Example
-This command is to train model using the ASDE-X data from Aug 1st, 2019 to Aug 6th, 2019, and test the trained model with data from Aug 7th, 2019.
+### آموزش و تست
+برای آموزش و تست مدل از دستور زیر استفاده میشود 
 
 ```
 python trainval.py --num_epochs 300 --start_test 250 --neighbor_thred 10 --skip 5 --seq_length 20 --obs_length 12 --pred_length 8 --randomRotate False --learning_rate 0.0015 --sample_num 20
