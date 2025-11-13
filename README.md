@@ -48,4 +48,4 @@ In ```./src```, there are multiple Python scripts,
 
 ### Reference
 
-Code of Part 2 borrowed heavily from [here](https://github.com/ymlasu/para-atm-collection/tree/master/air-traffic-prediction/MultiAircraftTP)
+Code borrowed heavily from [here](https://github.com/ymlasu/para-atm-collection/tree/master/air-traffic-prediction/MultiAircraftTP)
